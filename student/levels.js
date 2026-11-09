@@ -38,7 +38,7 @@
      - at least one jump that needs the tuning you chose in Hole 1
    Assignment: Part 2, Hole 4.                                             */
 
-const START_LEVEL = 1;
+const START_LEVEL = 4;
 
 
 const LEVELS = [
