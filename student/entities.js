@@ -13,7 +13,6 @@ const ENEMY_TYPES = {
     points: 100,
     turnsAtLedges: true,
   },
-
   flyer: {
     movement: "hover",
     speed: 70,
@@ -25,7 +24,6 @@ const ENEMY_TYPES = {
     loopWidth: 60,
     loopHeight: 18,
   },
-
   hopper: {
     movement: "hop",
     speed: 40,
@@ -38,7 +36,6 @@ const ENEMY_TYPES = {
     hopPower: 460,
     hopEvery: 1.4,
   },
-
   sentry: {
     movement: "chase",
     speed: 45,
@@ -48,6 +45,7 @@ const ENEMY_TYPES = {
     stompable: false,
     points: 200,
     sightRange: 200,
+    turnsAtLedges: true,
   },
 };
 
@@ -59,7 +57,6 @@ const PICKUP_TYPES = {
     points: 10,
     treasure: true,
   },
-
   gem: {
     color: "#6fe3ff",
     size: 13,
@@ -67,7 +64,6 @@ const PICKUP_TYPES = {
     points: 50,
     treasure: true,
   },
-
   boots: {
     color: "#9cff6b",
     size: 14,
@@ -76,7 +72,6 @@ const PICKUP_TYPES = {
     treasure: false,
     power: { speed: 1.6, seconds: 6 },
   },
-
   feather: {
     color: "#f4f4f4",
     size: 12,
@@ -85,7 +80,6 @@ const PICKUP_TYPES = {
     treasure: false,
     power: { jump: 1.35, seconds: 8 },
   },
-
   heart: {
     color: "#ff4d6d",
     size: 14,
