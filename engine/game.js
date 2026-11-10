@@ -1,3 +1,4 @@
+
 /* Engine: the game loop. Loads levels, runs everything 60 times a second,
    keeps score, and decides when you win or lose. */
 
@@ -148,6 +149,10 @@ const Game = (() => {
     }
 
     S.levelTime += dt;
+
+    // Move platforms before updating the player so the player can ride them.
+    World.updatePlatforms(S.world, dt);
+
     const p = S.player;
     const outcome = Actors.updatePlayer(p, S.world, dt, fx);
     for (const e of S.enemies) Actors.updateEnemy(e, S.world, p, dt);
