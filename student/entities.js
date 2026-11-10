@@ -1,3 +1,4 @@
+
 /* ============================================================================
    entities.js — ENEMIES, PICKUPS, AND WHAT EACH MAP LETTER MEANS
    ============================================================================ */
@@ -104,6 +105,7 @@ const LEGEND = {
   "^": { kind: "tile", name: "spikes" },
   "P": { kind: "player" },
   "G": { kind: "goal" },
+  "M": { kind: "platform" },
   "o": { kind: "pickup", name: "coin" },
   "*": { kind: "pickup", name: "gem" },
   "b": { kind: "pickup", name: "boots" },
