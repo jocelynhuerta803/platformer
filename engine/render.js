@@ -1,3 +1,4 @@
+
 /* Engine: drawing. Everything is drawn from shapes, so there are no image
    files to lose. Colors come from student/theme.js. */
 
@@ -79,6 +80,24 @@ const Render = (() => {
           }
         }
       }
+    }
+  }
+
+  // Draws the moving platforms.
+  function platforms(ctx, world) {
+    if (!world.platforms) return;
+
+    for (const p of world.platforms) {
+      ctx.fillStyle = "#263b52";
+      rr(ctx, p.x, p.y, p.w, p.h, 4);
+      ctx.fill();
+
+      ctx.fillStyle = "#55d6be";
+      rr(ctx, p.x, p.y, p.w, 3, 2);
+      ctx.fill();
+
+      ctx.fillStyle = "rgba(255,255,255,0.35)";
+      ctx.fillRect(p.x + 5, p.y + 4, p.w - 10, 1);
     }
   }
 
@@ -198,6 +217,9 @@ const Render = (() => {
       if (w.tiles[r][c] === "solid") { ctx.strokeStyle = "rgba(255,255,255,0.12)"; ctx.strokeRect(c * TILE + 0.5, r * TILE + 0.5, TILE - 1, TILE - 1); }
       if (w.tiles[r][c] === "ledge") { ctx.strokeStyle = "rgba(255,255,255,0.4)"; ctx.beginPath(); ctx.moveTo(c * TILE, r * TILE + 0.5); ctx.lineTo(c * TILE + TILE, r * TILE + 0.5); ctx.stroke(); }
     }
+    if (w.platforms) {
+      for (const p of w.platforms) box(p, "#55d6be");
+    }
     for (const g of S.goals) box(g, "#4dd9ff");
     for (const k of S.pickups) if (!k.taken) box(k, "#ffe066");
     for (const e of S.enemies) if (!e.dead) box(e, "#ff4d4d");
@@ -272,6 +294,7 @@ const Render = (() => {
     ctx.save();
     ctx.translate(-Math.round(S.cam.x), -Math.round(S.cam.y));
     tiles(ctx, S.world, S.cam, W, H);
+    platforms(ctx, S.world);
     for (const g of S.goals) goal(ctx, g, S.time);
     for (const k of S.pickups) if (!k.taken) pickup(ctx, k, S.time);
     for (const e of S.enemies) enemy(ctx, e, S.time);
@@ -305,3 +328,4 @@ const Render = (() => {
 
   return { frame };
 })();
+
